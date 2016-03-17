@@ -1,0 +1,45 @@
+MongoDB schema for DYFI data
+
+dyfi {
+	events: [
+		event: {
+			_id:
+			magnitude:
+			latitude:
+			longitude:
+			depth:
+			event_timestamp:
+			localtime:
+			locationtext:
+			event_data: {
+				event_id:
+				source:
+				network:
+				region:
+				process_timestamp:
+				ciim_version:
+				code_version:
+				event_version:
+			}
+			cdi_summary: {
+				nresponses:
+				max_intensity:
+				citydb:
+			}
+			files: [
+				file: {
+					title:
+					id:
+					caption:
+					formats: [
+						format: {
+							name:
+							type:
+							data:
+						}
+					]
+				}
+			]
+		}
+	]
+}
