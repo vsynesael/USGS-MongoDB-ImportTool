@@ -20,7 +20,13 @@ public class Main {
     private static void iterateFiles(File folder) {
         for (File file : folder.listFiles()) {
             if (file.isFile()) {
-                // parse file
+                if (file.getName().equals("contents.xml")) {
+                    // parse the file
+                }
+                else if (file.getName().equals("product.xml")) {
+                    // parse the file
+                }
+                // omit all other files
             }
             else {
                 iterateFiles(file);
@@ -35,6 +41,7 @@ public class Main {
 
         final File folder = new File(inFolder);
 
+        iterateFiles(folder);
 
     }
 }
