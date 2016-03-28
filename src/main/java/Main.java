@@ -1,3 +1,6 @@
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.Scanner;
 
@@ -17,15 +20,35 @@ public class Main {
      * @param folder - folder being processed
      * @return POJO representing the event being parsed
      */
-    private static void iterateFiles(File folder) {
-        for (File file : folder.listFiles()) {
+    private static void iterateFiles(java.io.File folder) {
+        for (java.io.File file : folder.listFiles()) {
             if (file.isFile()) {
-                if (file.getName().equals("contents.xml")) {
-                    // parse the file
+                if (file.getName().equals("contents.xml"))
+                {
+                    try
+                    {
+                        // parse the file
+                        JAXBContext contentsContext = JAXBContext.newInstance(Contents.class);
+                        Unmarshaller contentsUnmarshaller=contentsContext.createUnmarshaller();
+                        Contents contents=(Contents)contentsUnmarshaller.unmarshal(file);
+                        contents.toString();
+                    } catch(JAXBException je)
+                    {
+                        je.printStackTrace();
+                    }
                 }
-                else if (file.getName().equals("product.xml")) {
-                    // parse the file
-                }
+                else if (file.getName().equals("product.xml"))
+                {
+                    try
+                    {
+                        // parse the file
+                        JAXBContext productContext = JAXBContext.newInstance(Product.class);
+                        Unmarshaller productUnmarshaller=productContext.createUnmarshaller();
+                        Product product=(Product)productUnmarshaller.unmarshal(file);
+                    } catch(JAXBException je)
+                    {
+                        je.printStackTrace();
+                    }                }
                 // omit all other files
             }
             else {
