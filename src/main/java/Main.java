@@ -31,7 +31,6 @@ public class Main {
                         JAXBContext contentsContext = JAXBContext.newInstance(Contents.class);
                         Unmarshaller contentsUnmarshaller=contentsContext.createUnmarshaller();
                         Contents contents=(Contents)contentsUnmarshaller.unmarshal(file);
-                        ;
                     } catch(JAXBException je)
                     {
                         je.printStackTrace();
@@ -45,12 +44,25 @@ public class Main {
                         JAXBContext productContext = JAXBContext.newInstance(Product.class);
                         Unmarshaller productUnmarshaller=productContext.createUnmarshaller();
                         Product product=(Product)productUnmarshaller.unmarshal(file);
-                        "h".toString();
                     } catch(JAXBException je)
                     {
                         je.printStackTrace();
-                    }                }
-                // omit all other files
+                    }
+                }
+                else if (file.getName().equals("event_data.xml"))
+                {
+                    try
+                    {
+                        // parse the file
+                        JAXBContext eventDataContext = JAXBContext.newInstance(Event_Data.class);
+                        Unmarshaller eventDataUnmarshaller = eventDataContext.createUnmarshaller();
+                        Event_Data eventData = (Event_Data) eventDataUnmarshaller.unmarshal(file);
+                    } catch (JAXBException je)
+                    {
+                        je.printStackTrace();
+                    }
+                }
+                    // omit all other files
             }
             else {
                 iterateFiles(file);
