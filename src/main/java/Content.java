@@ -3,7 +3,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="contents")
-public class Contents
+public class Content
 {
     private static class file
     {

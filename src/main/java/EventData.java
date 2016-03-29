@@ -3,7 +3,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="event_data")
-public class Event_Data
+public class EventData
 {
     private String _eventId;
 
