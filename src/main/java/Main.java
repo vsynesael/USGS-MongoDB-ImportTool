@@ -31,7 +31,7 @@ public class Main {
                         JAXBContext contentsContext = JAXBContext.newInstance(Contents.class);
                         Unmarshaller contentsUnmarshaller=contentsContext.createUnmarshaller();
                         Contents contents=(Contents)contentsUnmarshaller.unmarshal(file);
-                        contents.toString();
+                        ;
                     } catch(JAXBException je)
                     {
                         je.printStackTrace();
@@ -45,6 +45,7 @@ public class Main {
                         JAXBContext productContext = JAXBContext.newInstance(Product.class);
                         Unmarshaller productUnmarshaller=productContext.createUnmarshaller();
                         Product product=(Product)productUnmarshaller.unmarshal(file);
+                        "h".toString();
                     } catch(JAXBException je)
                     {
                         je.printStackTrace();
