@@ -1,3 +1,5 @@
+import com.mongodb.MongoClient;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -103,6 +105,12 @@ public class Main {
         List<Event> eventList = new ArrayList<>();
 
         iterateFiles(folder, eventList);
+
+        System.out.println("Enter Mongo Connection URI:");
+        // need to determine what input string we need to make a connection to our db
+        final String mongoURI = read.nextLine();
+        MongoIntegrator mongo = new MongoIntegrator();
+        MongoClient connection = mongo.connectToMongoDB(mongoURI);
 
     }
 }
