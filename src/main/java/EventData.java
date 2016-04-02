@@ -2,6 +2,10 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * @author Jeff Godisart, Delerina Hill, Vanessa Synesael
+ * Western University - CS4411B - Winter 2016
+ */
 @XmlRootElement(name="event_data")
 public class EventData
 {
@@ -53,7 +57,7 @@ public class EventData
     public String getEventVersion() {return _eventVersion;}
     public void setEventVersion(String e) {_eventVersion=e;}
 
-    private static class Event
+    public static class Event
     {
         private String _magnitude;
 
@@ -104,7 +108,7 @@ public class EventData
     public Event getEvent() {return _event;}
     public void setEvent(Event e) {_event=e;}
 
-    private static class Cdi_Summary
+    public static class Cdi_Summary
     {
         String _nResponses;
 

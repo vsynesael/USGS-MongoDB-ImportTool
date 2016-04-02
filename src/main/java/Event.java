@@ -1,5 +1,6 @@
 /**
- * Created by Vanessa on 2016-03-29.
+ * @author Jeff Godisart, Delerina Hill, Vanessa Synesael
+ * Western University - CS4411B - Winter 2016
  */
 public class Event {
 

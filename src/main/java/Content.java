@@ -2,6 +2,10 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * @author Jeff Godisart, Delerina Hill, Vanessa Synesael
+ * Western University - CS4411B - Winter 2016
+ */
 @XmlRootElement(name="contents")
 public class Content
 {

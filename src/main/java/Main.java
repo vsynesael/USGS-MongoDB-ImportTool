@@ -1,4 +1,6 @@
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoDatabase;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -13,7 +15,7 @@ import java.util.Scanner;
  * Tool imports the data into a MongoDB
  *
  * Developed by: Vanessa Synesael, Jeff Godisart and Delerina Hill
- * Western University - CS4411B - Databases II
+ * Western University - CS4411B - Winter 2016
  */
 public class Main {
 
@@ -54,20 +56,6 @@ public class Main {
                         je.printStackTrace();
                     }
                 }
-                // product file is currently not used by our schema implementation
-                else if (file.getName().equals("product.xml"))
-                {
-//                    try
-//                    {
-//                        // parse the file
-//                        JAXBContext productContext = JAXBContext.newInstance(Product.class);
-//                        Unmarshaller productUnmarshaller = productContext.createUnmarshaller();
-//                        Product product = (Product)productUnmarshaller.unmarshal(file);
-//                    } catch(JAXBException je)
-//                    {
-//                        je.printStackTrace();
-//                    }
-                }
                 // event data file returns all the event specific data
                 else if (file.getName().equals("event_data.xml"))
                 {
@@ -96,12 +84,17 @@ public class Main {
         }
     }
 
+    static private MongoClient connectToMongoDB( String connection ) {
+        MongoClientURI mongoURI = new MongoClientURI(connection);
+        return new MongoClient(mongoURI);
+    }
+
     public static void main(String args[]) {
         Scanner read = new Scanner(System.in);
         System.out.println("Enter the root folder for DYFI data:");
         final String inFolder = read.nextLine();
 
-        final File folder = new File(inFolder);
+        final File folder = new File("C:\\Users\\Vanessa\\courses\\cs4411\\import\\dyfi");
         List<Event> eventList = new ArrayList<>();
 
         iterateFiles(folder, eventList);
@@ -109,8 +102,13 @@ public class Main {
         System.out.println("Enter Mongo Connection URI:");
         // need to determine what input string we need to make a connection to our db
         final String mongoURI = read.nextLine();
-        MongoIntegrator mongo = new MongoIntegrator();
-        MongoClient connection = mongo.connectToMongoDB(mongoURI);
+        MongoClient connection = connectToMongoDB("mongodb://localhost:27017");
+        MongoDatabase db = connection.getDatabase("earthquake");
+        System.out.println("Connected successully to db " + db.getName());
+
+        // insert all the events into the db
+        Insert mongoInsert = new Insert();
+        boolean success = mongoInsert.insertEvents(eventList, db);
 
     }
 }
