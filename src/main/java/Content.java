@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="contents")
 public class Content
 {
-    private static class file
+    public static class file
     {
         private String _title;
 
@@ -23,7 +23,7 @@ public class Content
         public String getId() {return _id;}
         public void setId(String i) {_id=i;}
 
-        private static class format
+        public static class format
         {
             private String _href;
 
