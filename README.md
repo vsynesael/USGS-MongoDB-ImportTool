@@ -21,11 +21,11 @@
 ----------------------------------------------------------------------
 *Program running instructions*<br>
 1. execute the jar with dependencies<br>
- - _java -jar ImportTool-1.0-SNAPSHOT-jar-with-dependencies.jar_
+..._java -jar ImportTool-1.0-SNAPSHOT-jar-with-dependencies.jar_
 2. program will ask for a folder path to the information to be imported<br>
- - the program expects this to eventually find contents.xml and event_data.xml files from the folder structure under dyfi<br>
+...the program expects this to eventually find contents.xml and event_data.xml files from the folder structure under dyfi<br>
 3. once the program has parsed all the files and created appropriate java objects of the data, it will ask for a mongo connection<br>
- - formatted _mongodb:host_name:ip_address_<br>
-    ie. mongodb://host:27017<br>
-    NB this version of the program does not require user name or password for access to our database<br>
+...formatted _mongodb:host_name:ip_address_<br>
+...ie. mongodb://host:27017<br>
+...NB this version of the program does not require user name or password for access to our database<br>
 4. from here the information should be automatically uploaded to your mongo dbms and inserted into a database called "earthquake" under the collection "dyfi"<br>
